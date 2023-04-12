@@ -86,6 +86,14 @@
       <map name="ROF2OCN_LIQ_RMAPNAME">cpl/gridmaps/rJRA025/map_JRA025m_to_tx0.66v1_nnsm_e333r100_190910.nc</map>
       <map name="ROF2OCN_ICE_RMAPNAME">cpl/gridmaps/rJRA025/map_JRA025m_to_tx0.66v1_nnsm_e333r100_190910.nc</map>
     </gridmap>
+    <gridmap rof_grid="rx1" ocn_grid="oQU120" >
+      <map name="ROF2OCN_LIQ_RMAPNAME">/glade/p/univ/ucsu0085/inputdata/rof_remap/wght_file_drof_qu120.230123.nc</map>
+      <map name="ROF2OCN_ICE_RMAPNAME">/glade/p/univ/ucsu0085/inputdata/rof_remap/wght_file_drof_qu120.230123.nc</map>
+    </gridmap>
+    <gridmap rof_grid="r05" ocn_grid="oQU120" >
+      <map name="ROF2OCN_LIQ_RMAPNAME">/glade/p/univ/ucsu0085/inputdata/rof_remap/wght_file_mosart_qu120.230123.nc</map>
+      <map name="ROF2OCN_ICE_RMAPNAME">/glade/p/univ/ucsu0085/inputdata/rof_remap/wght_file_mosart_qu120.230123.nc</map>
+    </gridmap>
 
     <!-- ======================================================== -->
     <!-- GRIDS: glc to ocn mapping                                -->
