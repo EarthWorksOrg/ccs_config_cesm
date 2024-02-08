@@ -1260,7 +1260,7 @@ This allows using a different mpirun command to launch unit tests
     <DESC>NCAR AMD EPYC system</DESC>
     <NODENAME_REGEX>de.*.hpc.ucar.edu</NODENAME_REGEX>
     <OS>CNL</OS>
-    <COMPILERS>intel,gnu,cray,nvhpc,intel-oneapi,intel-classic</COMPILERS>
+    <COMPILERS>intel,gnu,nvhpc,intel-oneapi,intel-classic</COMPILERS>
     <MPILIBS>mpich</MPILIBS>
     <CIME_OUTPUT_ROOT>$ENV{SCRATCH}</CIME_OUTPUT_ROOT>
     <DIN_LOC_ROOT>$ENV{CESMDATAROOT}/inputdata</DIN_LOC_ROOT>
@@ -1298,20 +1298,20 @@ This allows using a different mpirun command to launch unit tests
       <cmd_path lang="csh">module</cmd_path>
       <modules>
 	<command name="load">cesmdev/1.0</command>
-	<command name="load">ncarenv/23.06</command>
+	<command name="load">ncarenv/23.09</command>
         <command name="purge"/>
 	<command name="load">craype</command>
       </modules>
       <modules compiler="intel">
-        <command name="load">intel/2023.0.0</command>
+        <command name="load">intel/2023.2.1</command>
 	<command name="load">mkl</command>
       </modules>
       <modules compiler="intel-oneapi">
-        <command name="load">intel-oneapi/2023.0.0</command>
+        <command name="load">intel-oneapi/2023.2.1</command>
 	<command name="load">mkl</command>
       </modules>
       <modules compiler="intel-classic">
-        <command name="load">intel-classic/2023.0.0</command>
+        <command name="load">intel-classic/2023.2.1</command>
 	<command name="load">mkl</command>
       </modules>
       <modules compiler="cray">
@@ -1323,7 +1323,7 @@ This allows using a different mpirun command to launch unit tests
         <command name="load">cray-libsci/23.02.1.1</command>
       </modules>
       <modules compiler="nvhpc">
-        <command name="load">nvhpc/23.5</command>
+        <command name="load">nvhpc/23.7</command>
       </modules>
 
       <modules>
@@ -1331,14 +1331,14 @@ This allows using a different mpirun command to launch unit tests
         <command name="load">cmake</command>
       </modules>
       <modules mpilib="mpich">
-	<command name="load">cray-mpich/8.1.25</command>
+	<command name="load">cray-mpich/8.1.27</command>
       </modules>
       <modules mpilib="mpi-serial">
         <command name="load">mpi-serial/2.3.0</command>
       </modules>
 
       <modules mpilib="mpich" compiler="nvhpc" gpu_offload="!none">
-        <command name="load">cuda/11.7.1</command>
+        <command name="load">cuda/12.2.1</command>
       </modules>
 
       <modules mpilib="mpi-serial">
@@ -1352,12 +1352,12 @@ This allows using a different mpirun command to launch unit tests
 
       <modules DEBUG="TRUE">
 	<command name="load">parallelio/2.6.2-debug</command>
-	<command name="load">esmf/8.6.0b03-debug</command>
+	<command name="load">esmf/8.6.0b04-debug</command>
       </modules>
 
       <modules DEBUG="FALSE">
 	<command name="load">parallelio/2.6.2</command>
-	<command name="load">esmf/8.6.0b03</command>
+	<command name="load">esmf/8.6.0b04</command>
       </modules>
     </module_system>
 
@@ -2771,9 +2771,9 @@ This allows using a different mpirun command to launch unit tests
     <DESC>NERSC EX AMD EPYC, os is CNL, 64 pes/node, batch system is Slurm</DESC>
     <NODENAME_REGEX>$ENV{NERSC_HOST}:perlmutter</NODENAME_REGEX>
     <OS>CNL</OS>
-    <COMPILERS>gnu,cray,nvidia,aocc</COMPILERS>
-    <MPILIBS>mpich</MPILIBS>
-    <PROJECT>mp9_g</PROJECT>
+    <COMPILERS>nvhpc</COMPILERS>
+    <MPILIBS>openmpi</MPILIBS>
+    <PROJECT>m4180</PROJECT>
     <CIME_OUTPUT_ROOT>$ENV{SCRATCH}</CIME_OUTPUT_ROOT>
     <DIN_LOC_ROOT>/global/cfs/cdirs/ccsm1/inputdata</DIN_LOC_ROOT>
     <DIN_LOC_ROOT_CLMFORC>/global/cfs/cdirs/ccsm1/inputdata/atm/datm7</DIN_LOC_ROOT_CLMFORC>
@@ -2795,7 +2795,7 @@ This allows using a different mpirun command to launch unit tests
         <arg name="binding"> -c {{ srun_binding }}</arg>
       </arguments>
     </mpirun>
-    <module_system type="module">
+  <module_system type="module">
       <init_path lang="perl">/usr/share/lmod/lmod/init/perl</init_path>
       <init_path lang="python">/usr/share/lmod/lmod/init/env_modules_python.py</init_path>
       <init_path lang="sh">/usr/share/lmod/lmod/init/sh</init_path>
@@ -2823,43 +2823,24 @@ This allows using a different mpirun command to launch unit tests
         <command name="rm">craype</command>
       </modules>
 
-      <modules compiler="cray">
-        <command name="load">PrgEnv-cray</command>
-        <command name="switch">cce cce/12.0.3</command>
-      </modules>
-      <modules compiler="gnu">
-        <command name="load">PrgEnv-gnu</command>
-        <command name="switch">gcc gcc/11.2.0</command>
+      <modules compiler="nvhpc">
+        <command name="purge"/>
+        <command name="load">PrgEnv/PGI+OpenMPI/2024-01-31</command>
+        <command name="load">esmf</command>
       </modules>
       <modules>
-        <command name="swap">craype craype/2.7.10</command>
-      </modules>
-      <modules>
-        <command name="switch">cray-libsci/21.08.1.2</command>
-      </modules>
-      <modules>
-        <command name="load">cray-mpich/8.1.9</command>
-      </modules>
-      <modules mpilib="mpi-serial">
-        <command name="rm">cray-netcdf-hdf5parallel</command>
-        <command name="rm">cray-hdf5-parallel</command>
-        <command name="rm">cray-parallel-netcdf</command>
-        <command name="load">cray-hdf5/1.12.0.7</command>
-        <command name="load">cray-netcdf/4.7.4.7</command>
-      </modules>
-      <modules mpilib="!mpi-serial">
-        <command name="load">cray-hdf5-parallel/1.12.0.7</command>
-        <command name="load">cray-netcdf-hdf5parallel/4.7.4.7</command>
-        <command name="load">cray-parallel-netcdf/1.12.1.7</command>
-      </modules>
-      <modules>
-        <command name="load">cmake/3.20.5</command>
+        <command name="load">cmake/3.24.3</command>
       </modules>
     </module_system>
     <environment_variables>
       <env name="OMP_STACKSIZE">256M</env>
 <!--      <env name="OMP_PROC_BIND">spread</env>
       <env name="OMP_PLACES">threads</env> -->
+      <env name="ESMFMKFILE">$ENV{ESMF}/lib/libO/Linux.nvhpc.64.openmpi.default/esmf.mk</env>
+      <env name="CC">nvc</env>
+      <env name="FC">nvfortran</env>
+      <env name="NETCDF_C_PATH">$ENV{NETCDF_C}</env>
+      <env name="NETCDF_FORTRAN_PATH">$ENV{NETCDF_F}</env>
     </environment_variables>
   </machine>
 
