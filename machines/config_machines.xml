@@ -2910,27 +2910,8 @@ This allows using a different mpirun command to launch unit tests
       <cmd_path lang="python">/usr/share/lmod/lmod/libexec/lmod python</cmd_path>
       <cmd_path lang="sh">module</cmd_path>
       <cmd_path lang="csh">module</cmd_path>
-      <modules>
-        <command name="rm">PrgEnv-nvidia</command>
-        <command name="rm">PrgEnv-cray</command>
-        <command name="rm">PrgEnv-aocc</command>
-        <command name="rm">PrgEnv-gnu</command>
-        <command name="rm">nvidia</command>
-        <command name="rm">cce</command>
-        <command name="rm">gnu</command>
-        <command name="rm">aocc</command>
-        <command name="rm">cray-parallel-netcdf</command>
-        <command name="rm">cray-hdf5-parallel</command>
-        <command name="rm">cray-libsci</command>
-        <command name="rm">cray-mpich</command>
-        <command name="rm">cray-hdf5</command>
-        <command name="rm">cray-netcdf-hdf5parallel</command>
-        <command name="rm">cray-netcdf</command>
-        <command name="rm">craype</command>
-      </modules>
 
       <modules compiler="nvhpc">
-        <command name="purge"/>
         <command name="load">PrgEnv/PGI+OpenMPI/2024-01-31</command>
         <command name="load">esmf</command>
       </modules>
