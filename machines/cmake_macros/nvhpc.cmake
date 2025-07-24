@@ -73,8 +73,3 @@ endif()
 if (OPENMP_GPU_FLAGS)
   string(APPEND LDFLAGS " ${OPENMP_GPU_FLAGS}")
 endif()
-# EarthWorks specific: add this flag ONLY for GPU runs which tend to use high pcols values
-if (OPENACC_GPU_OFFLOAD)
-   string(APPEND FFLAGS " -mcmodel=medium ")
-   string(APPEND LDFLAGS " -mcmodel=medium ")
-endif()
