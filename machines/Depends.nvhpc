@@ -175,10 +175,10 @@ ifeq ($(DEBUG),FALSE)
   $(CLUBB_OBJS): %.o: %.F90
 	  $(FC) -c $(INCLDIR) $(INCS) $(FFLAGS) $(FREEFLAGS) $(OPENACC_GPU_FLAGS) $<
 
-# ifeq ($(COMP_NAME),mpaso)
-#   # mpas ocean files need gpuflags
-#   FFLAGS +=$(GPUFLAGS)
-# endif
+ifeq ($(COMP_NAME),mpaso)
+  # mpas ocean files need gpuflags
+  FFLAGS +=$(GPUFLAGS)
+endif
 
 else
   $(REDUCED_ERRORCHKS_IN_DEBUG): %.o: %.F90
