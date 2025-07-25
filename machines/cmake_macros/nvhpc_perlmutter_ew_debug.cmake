@@ -1,1 +1,0 @@
-nvhpc_perlmutter.cmake
